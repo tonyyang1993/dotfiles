@@ -17,5 +17,5 @@ set relativenumber
 
 set showmatch           " highlight matching parenthesis
 set hlsearch
-
+set incsearch
 
