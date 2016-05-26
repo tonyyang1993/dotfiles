@@ -21,7 +21,7 @@ Entrance: `train()` at `caffe_main.cpp`
         - `InitTrainNet()`
             - **upload params** `set_table: outputs_global_table_`
             - **upload params** `layer->SetUpBlobGlobalTable`.
-                - `blobs_[idx]->set_table`HH
+                - `blobs_[idx]->set_table`
                 - `FillPSTable(this->blobs_[0].get())`
     - `Solve():`
         - `for (; iter_ < param_.max_iter(); ++iter_)`
