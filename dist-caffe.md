@@ -11,15 +11,18 @@ Entrance: `train()` at `caffe_main.cpp`
                     - `for layers: layers_[layer_id]->SetUp`
                         - `concrete class: LayerSetUp()`
                             - `for blobs: blob[id]->CreatePSTable()`
-                                - `PSTableGroup::CreateTable(global_id_, table_config);` 
+                                - **CreateTable** `PSTableGroup::CreateTable(global_id_, table_config);` 
             - `InitPSForTestNets(num_test_nets)`
                 - `net_->InitPS(net_param, true, num_additional_tables, &layer_blobs_global_idx_)`
                 - `...`
+- `petuum::PSTableGroup::CreateTableDone();`
 - `thread(&caffe::CaffeEngine<float>::Start, std::ref(*caffe_engine))`
     - `new Solve()`
         - `InitTrainNet()`
-            - `set_table: outputs_global_table_`
-            - `layer->SetUpBlobGlobalTable`
+            - **upload params** `set_table: outputs_global_table_`
+            - **upload params** `layer->SetUpBlobGlobalTable`.
+                - `blobs_[idx]->set_table`HH
+                - `FillPSTable(this->blobs_[0].get())`
     - `Solve():`
         - `for (; iter_ < param_.max_iter(); ++iter_)`
             - `JoinSyncThreads();`
