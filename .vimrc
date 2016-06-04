@@ -19,3 +19,5 @@ set showmatch           " highlight matching parenthesis
 set hlsearch
 set incsearch
 
+nnoremap H gT
+nnoremap L gt
